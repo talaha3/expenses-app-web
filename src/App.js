@@ -1,10 +1,10 @@
-import './App.css';
-
+import "./App.css";
+import { Table } from "./components/Table.jsx";
 function App() {
   return (
     <div className="App">
-    Hello World!
-        </div>
+      <Table />
+    </div>
   );
 }
 
