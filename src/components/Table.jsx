@@ -1,7 +1,7 @@
 import React from "react";
 import "./Table.css";
 
-export const Table = () => {
+export const Table = ({ rows, deleteTransaction }) => {
   return (
     <div className="table-wrapper">
       <table className="table">
@@ -14,17 +14,26 @@ export const Table = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Home</td>
-            <td>This is the main page</td>
-            <td>
-              <span>Grocery</span>
-            </td>
-            <td>
-              <button>Edit</button>
-              <button>Delete</button>
-            </td>
-          </tr>
+          {rows.map((row, index) => {
+            const categoryText =
+              row.category.charAt(0).toUpperCase() + row.category.slice(1);
+
+            return (
+              <tr key={index}>
+                <td>{row.amount}</td>
+                <td className="expand">{row.description}</td>
+                <td>
+                  <span>{categoryText} </span>
+                </td>
+                <td>
+                  <button>Edit</button>
+                  <button onClick={() => deleteTransaction(index)}>
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </table>
     </div>
