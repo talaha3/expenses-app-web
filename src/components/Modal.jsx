@@ -2,9 +2,14 @@ import React from "react";
 
 import "./Modal.css";
 
-export const Modal = () => {
+export const Modal = ({ closeModal }) => {
   return (
-    <div className="modal-wrapper">
+    <div
+      className="modal-wrapper"
+      onClick={(e) => {
+        if (e.target.className === "modal-wrapper") closeModal();
+      }}
+    >
       <div className="modal">
         <form>
           <div className="form-group">
